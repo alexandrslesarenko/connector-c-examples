@@ -54,7 +54,8 @@ int main(int argc, char **argv)
 			  0,           /* port number, 0 for default */
 			  NULL,        /* socket file or named pipe name */
 			  CLIENT_FOUND_ROWS /* connection flags */ )) {
-    puts("Connect failed\n");
+      printf("Failed to connect to database: Error: %s\n",
+              mysql_error(mysql));
   } else {                
     mysql_query(mysql, "SET NAMES utf8");
     if (mysql_query(mysql, "SELECT * FROM city LIMIT 1")) {
